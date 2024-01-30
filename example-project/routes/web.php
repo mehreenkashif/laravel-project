@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -26,9 +27,8 @@ Route::get('/', function () {
     if (!Auth::check()) {
         return redirect('/login');
     }
-
     return view('home');
-});
+    });
 
 Auth::routes();
 
@@ -37,6 +37,8 @@ Route::get('/home',[HomeController::class, 'index'])->name('home');
 Route::resource('Students',StudentController::class);
 Route::resource('Teachers',TeacherController::class);
 Route::resource('Classes',ClassController::class);
+Route::resource('Courses',CoursesController::class);
+
 
 
 

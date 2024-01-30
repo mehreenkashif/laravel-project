@@ -23,7 +23,30 @@
     <style>
     .text-grey {
         color: #cccccc; /* Light grey color */
-      }</style>
+      }
+
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0; /* Set background color or image for the body */
+    }
+
+    header {
+        background-color: rgba(255, 255, 255, 0.0); /* Use RGBA for transparency (adjust the last value for transparency) */
+        padding: 20px;
+        /* position: fixed; */
+        width: 100%;
+        z-index: 1000; /* Set a high z-index to ensure the header is above other elements */
+    }
+
+    /* Additional styles for navigation links or logo can be added here */
+
+    section {
+        margin-top: 80px; /* Adjust this value to prevent content from being hidden behind the fixed header */
+        padding: 20px;
+    }
+</style>
     @yield('css')
 {{--  --}}
 
@@ -31,8 +54,31 @@
 
 </head>
 <body>
+
+    {{-- <header>
+        <!-- Your logo, navigation menu, or other header content goes here -->
+        <h5>Management System</h5>
+        <nav class="navbar navbar-expand-md">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item dropdown">
+                    <a href="Students/show" class="nav-link">Students</a>
+                   </li>
+
+                   <li class="nav-item dropdown">
+                    <a href="Classes/show" class="nav-link">Classes</a>
+                   </li>
+                   <li class="nav-item dropdown">
+                    <a href="Teachers/show" class="nav-link">Teachers</a>
+                   </li>
+            </ul>
+        </nav>
+    </header> --}}
+
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <header>
+        <nav class="navbar navbar-expand-md navbar-light ">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
 
@@ -100,11 +146,18 @@
                 </div>
             </div>
         </nav>
+       </header>
 
-        <main class="">
+        <main >
             {{-- py-4 --}}
             @yield('content')
         </main>
+
     </div>
 </body>
 </html>
+
+
+{{--  --}}
+
+

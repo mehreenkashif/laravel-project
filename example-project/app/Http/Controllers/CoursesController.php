@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
-use App\Models\Student;
+use App\Http\Resources\courseResource;
+use App\Models\Courses;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class CoursesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
+       $course = Courses::get();
+    //    $courseapi=courseResource::collection($course);
 
     }
 
@@ -25,9 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $class =Classes::get();
-        $route = route('Students.store');
-        return view('layouts.createStudent',['class'=> $class,'route'=>$route]);
+        //
+        // view('');
     }
 
     /**
@@ -38,16 +39,15 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-         $data =$request->validate(
-            [
-                'name'=>'required',
-                'class_id'=>'required',
-            ]
+        //
 
-        );
+        // $data=$request->validate ([
+        //     'course'=>'required',
+        //     // 'course'=>'',
 
-        $students= Student::create($data);
+        // ]);
     }
+
     /**
      * Display the specified resource.
      *
@@ -56,11 +56,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-
-     $studentlist=Student::with('studentClass')->get();
-
-      return view('layouts.studentsList',['studentlist' => $studentlist]);
-
+        //
     }
 
     /**

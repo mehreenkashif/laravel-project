@@ -17,7 +17,6 @@ class ClassController extends Controller
     public function index()
     {
         //
-
     }
 
     /**
@@ -28,12 +27,13 @@ class ClassController extends Controller
     public function create()
     {
          $teachers=Teacher::get();
-        //  dd($teacher);
          $numberOfStudents = Student::groupBy('class_id')
          ->selectRaw('class_id, COUNT(*) as No_of_Students')
          ->get();
-        $route=route('Classes.store');
-        return view('layouts.classes.form',['teachers' => $teachers,'numberOfStudents'=>$numberOfStudents,'route'=>$route]);
+
+         dd($numberOfStudents);
+         $route=route('Classes.store');
+         return view('layouts.classes.form',['teachers' => $teachers,'numberOfStudents'=>$numberOfStudents,'route'=>$route]);
     }
 
     /**
@@ -45,26 +45,16 @@ class ClassController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+       $data =$request->validate(
 
-    //    $data= $request(
-    //         [
-    //             'class'=>'class',
-    //             'teacher_id'=>'id',
-
-    //         ]
-    //     );
-    //     $class=Classes::create($data);
-    $data =$request->validate(
-
-        [
+          [
             'class'=>'required',
             'teacher_id'=>'required',
-
-        ]
+            
+         ]
 
     );
-
-      $classes= Classes::create($data);
+        $classes= Classes::create($data);
     }
 
     /**
@@ -75,10 +65,8 @@ class ClassController extends Controller
      */
     public function show($id)
     {
-      
         $classes=Classes::with('students','teacher')->get();
-        //dd($classes);
-        //$merge_result= array_merge($classes,$numberOfStudents);
+
         return view('layouts.classes.ClassList',[
             'classes'=>$classes,
 

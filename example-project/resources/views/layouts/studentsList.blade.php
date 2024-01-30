@@ -1,11 +1,11 @@
 @extends('layouts.app')
  @section('content')
 
- <div class="page-body">
+ <div class="page-body ">
     <div class="container-fluid main ">
-        <div class="row">
-            <div class="col-md-8 student-heading">
-                <h4 class="mt-2">Students List</h4>
+        <div class="row justify-content-xl-end">
+            <div class="col-md-4 m-lg-3">
+                <h3 class="mt-2">Students List</h3>
             </div>
             <div class="col-md-4 text-right ">
                 <a class="btn btn-primary mt-2" href="{{ route('Students.create') }}">
@@ -13,12 +13,12 @@
                 </a>
             </div>
         </div>
-
-        <div class="col-sm-12 mt-4">
+     <div class="row justify-content-center">
+        <div class="col-sm-10 mt-4">
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-dark">
+                        <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -44,17 +44,17 @@
                 </div>
             </div>
         </div>
-    </div>
+     </div>
+   </div>
+
 </div>
 
 
 @endsection @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/vendors/simple-mde.css')}}"/>
 <style>
-    .student-heading{
-margin-left:20px;
-margin-top: 30px;
-    }
+
+
     </style>
 @endsection @section('js')
     <script src="{{asset('js/editor/simple-mde/simplemde.min.js')}}"></script>

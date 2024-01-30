@@ -13,9 +13,6 @@ class Classes extends Model
         'class',
         'teacher_id',
     ];
-// public function teacher(){
-//     return $this->hasOne(Teacher::class,'teacher_id');
-// }
 
     public function teacher()
     {
@@ -23,7 +20,7 @@ class Classes extends Model
     }
 
 
-public function students(){
+    public function students(){
     return $this->hasMany(Student::class,'class_id');
-}
+  }
 }
